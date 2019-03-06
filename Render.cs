@@ -666,11 +666,11 @@ void main()
             quadAttribbuff[pos++] = 1;
 
 #if !ALL_COLORS
-            b = .313f;
+            b = .713f;
             r = .0196f;
             g = .0274f;
             a = 1f;
-            b2 = .585f;
+            b2 = .085f;
             r2 = .0392f;
             g2 = .0249f;
             a2 = 1f;
@@ -752,13 +752,13 @@ void main()
             quadAttribbuff[pos++] = 0;
             quadAttribbuff[pos++] = 1;
 
-            b = .313f;
+            b = .013f;
             r = .0196f;
-            g = .0274f;
+            g = .2274f;
             a = 1f;
-            b2 = .585f;
+            b2 = .085f;
             r2 = .0392f;
-            g2 = .0249f;
+            g2 = .7249f;
             a2 = 1f;
 
             pos = quadBufferPos * 16;
