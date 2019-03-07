@@ -41,6 +41,8 @@ namespace PFARender
 #if !ALL_COLORS
             topColorSelect.SelectedIndex = 1;
             topColorSelect.IsEnabled = false;
+            topColorSelect.Visibility = Visibility.Hidden;
+            topCol.Visibility = Visibility.Hidden;
 #endif
         }
 

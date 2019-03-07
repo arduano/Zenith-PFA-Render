@@ -67,6 +67,8 @@ void main()
 }
 ";
         #endregion
+        
+        public bool ManualNoteDelete => false;
 
         RenderSettings renderSettings;
         Settings settings;
@@ -425,10 +427,6 @@ void main()
                         }
                     }
                     else break;
-                }
-                else
-                {
-                    n.delete = true;
                 }
             }
             if (blackNotesAbove)
