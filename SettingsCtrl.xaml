@@ -28,7 +28,7 @@
             <ComboBoxItem Content="Green"/>
         </ComboBox>
         <Label x:Name="topCol" Content="Top Color" HorizontalAlignment="Left" Margin="10,198,0,0" VerticalAlignment="Top"/>
-        <CheckBox Name="middleCSquare" Content="Middle C square" HorizontalAlignment="Left" Margin="13,95,0,0" VerticalAlignment="Top" Checked="MiddleCSquare_Checked"/>
+        <CheckBox Name="middleCSquare" Content="Middle C square" HorizontalAlignment="Left" Margin="13,95,0,0" VerticalAlignment="Top" Checked="MiddleCSquare_Checked" Unchecked="MiddleCSquare_Checked"/>
         <Label Content="Note Tempo" HorizontalAlignment="Left" Margin="13,135,0,0" VerticalAlignment="Top"/>
         <ComboBox Name="tickBase" HorizontalAlignment="Left" Margin="93,135,0,0" VerticalAlignment="Top" Width="113" Height="26" SelectedIndex="0" SelectionChanged="TickBase_SelectionChanged">
             <ComboBoxItem Content="Change Speed"/>
