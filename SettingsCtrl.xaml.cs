@@ -30,14 +30,13 @@ namespace PFARender
             lastNote.Value = settings.lastNote - 1;
             pianoHeight.Value = (int)(settings.pianoHeight * 100);
             noteDeltaScreenTime.Value = Math.Log(settings.deltaTimeOnScreen, 2);
-            screenTime.Content = settings.deltaTimeOnScreen;
+            screenTime.Content = (Math.Round(settings.deltaTimeOnScreen * 100) / 100).ToString();
             sameWidth.IsChecked = settings.sameWidthNotes;
             topColorSelect.SelectedIndex = (int)settings.topColor;
             middleCSquare.IsChecked = settings.middleC;
             blackNotesAbove.IsChecked = settings.blackNotesAbove;
             if (settings.tickBased) tickBase.SelectedIndex = 0;
             else tickBase.SelectedIndex = 1;
-            screenTime.Content = (Math.Round(settings.deltaTimeOnScreen * 100) / 100).ToString();
 #if !ALL_COLORS
             topColorSelect.SelectedIndex = 1;
             topColorSelect.IsEnabled = false;
