@@ -248,7 +248,7 @@ void main()
             double x1, x2, y1, y2;
             double wdth;
             float r, g, b, a, r2, g2, b2, a2, r3, g3, b3, a3;
-            double paddingx = 0.001;
+            double paddingx = 0.001 / 1920 * renderSettings.width;
             double paddingy = paddingx * renderSettings.width / renderSettings.height;
 
             double[] x1array = new double[257];
@@ -687,16 +687,6 @@ void main()
             quadAttribbuff[pos++] = 0;
             quadAttribbuff[pos++] = 1;
 
-#if !ALL_COLORS
-            b = .713f;
-            r = .0196f;
-            g = .0274f;
-            a = 1f;
-            b2 = .085f;
-            r2 = .0392f;
-            g2 = .0249f;
-            a2 = 1f;
-#else
             if (settings.topColor == TopColor.Red)
             {
                 r = .313f;
@@ -730,7 +720,6 @@ void main()
                 r2 = .0249f;
                 a2 = 1f;
             }
-#endif
 
             pos = quadBufferPos * 16;
             quadColorbuff[pos++] = r;
@@ -751,58 +740,6 @@ void main()
             quadColorbuff[pos++] = a2;
             quadBufferPos++;
             FlushQuadBuffer();
-
-#if !ALL_COLORS
-            //Red thing blue
-            pos = quadBufferPos * 8;
-            quadVertexbuff[pos++] = 0;
-            quadVertexbuff[pos++] = topRedMiddle;
-            quadVertexbuff[pos++] = 1;
-            quadVertexbuff[pos++] = topRedMiddle;
-            quadVertexbuff[pos++] = 1;
-            quadVertexbuff[pos++] = topRedEnd;
-            quadVertexbuff[pos++] = 0;
-            quadVertexbuff[pos++] = topRedEnd;
-
-            pos = quadBufferPos * 8;
-            quadAttribbuff[pos++] = 0;
-            quadAttribbuff[pos++] = 1;
-            quadAttribbuff[pos++] = 0;
-            quadAttribbuff[pos++] = 1;
-            quadAttribbuff[pos++] = 0;
-            quadAttribbuff[pos++] = 1;
-            quadAttribbuff[pos++] = 0;
-            quadAttribbuff[pos++] = 1;
-
-            b = .013f;
-            r = .0196f;
-            g = .2274f;
-            a = 1f;
-            b2 = .085f;
-            r2 = .0392f;
-            g2 = .7249f;
-            a2 = 1f;
-
-            pos = quadBufferPos * 16;
-            quadColorbuff[pos++] = r;
-            quadColorbuff[pos++] = g;
-            quadColorbuff[pos++] = b;
-            quadColorbuff[pos++] = a;
-            quadColorbuff[pos++] = r;
-            quadColorbuff[pos++] = g;
-            quadColorbuff[pos++] = b;
-            quadColorbuff[pos++] = a;
-            quadColorbuff[pos++] = r2;
-            quadColorbuff[pos++] = g2;
-            quadColorbuff[pos++] = b2;
-            quadColorbuff[pos++] = a2;
-            quadColorbuff[pos++] = r2;
-            quadColorbuff[pos++] = g2;
-            quadColorbuff[pos++] = b2;
-            quadColorbuff[pos++] = a2;
-            quadBufferPos++;
-            FlushQuadBuffer();
-#endif
 
             //Small grey thing
             pos = quadBufferPos * 8;
@@ -1880,14 +1817,23 @@ void main()
 
         public void SetTrackColors(Color4[][] trakcs)
         {
+            var cols = ((SettingsCtrl)SettingsControl).paletteList.GetColors(trakcs.Length);
+
             for (int i = 0; i < trakcs.Length; i++)
             {
-                for (int j = 0; j < trakcs[i].Length / 2; j++)
+                for (int j = 0; j < trakcs[i].Length; j++)
                 {
-                    trakcs[i][j * 2] = Color4.FromHsv(new OpenTK.Vector4((i * 16 + j) * 1.36271f % 1, 0.8f, 1.0f, 1f));
-                    trakcs[i][j * 2 + 1] = Color4.FromHsv(new OpenTK.Vector4((i * 16 + j) * 1.36271f % 1, 0.8f, 1.0f, 1f));
+                    trakcs[i][j] = cols[i * 32 + j];
                 }
             }
+            //for (int i = 0; i < trakcs.Length; i++)
+            //{
+            //    for (int j = 0; j < trakcs[i].Length / 2; j++)
+            //    {
+            //        trakcs[i][j * 2] = Color4.FromHsv(new OpenTK.Vector4((i * 16 + j) * 1.36271f % 1, 0.8f, 1.0f, 1f));
+            //        trakcs[i][j * 2 + 1] = Color4.FromHsv(new OpenTK.Vector4((i * 16 + j) * 1.36271f % 1, 0.8f, 1.0f, 1f));
+            //    }
+            //}
         }
 
         bool isBlackNote(int n)

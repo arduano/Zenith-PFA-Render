@@ -37,18 +37,14 @@ namespace PFARender
             blackNotesAbove.IsChecked = settings.blackNotesAbove;
             if (settings.tickBased) tickBase.SelectedIndex = 0;
             else tickBase.SelectedIndex = 1;
-#if !ALL_COLORS
-            topColorSelect.SelectedIndex = 1;
-            topColorSelect.IsEnabled = false;
-            topColorSelect.Visibility = Visibility.Hidden;
-            topCol.Visibility = Visibility.Hidden;
-#endif
+            paletteList.SelectImage(settings.palette);
         }
 
         public SettingsCtrl(Settings settings) : base()
         {
             InitializeComponent();
             this.settings = settings;
+            paletteList.SetPath("Plugins\\Assets\\PFA\\Palettes", 0.8f);
             LoadSettings(true);
             SetValues();
         }
@@ -81,6 +77,7 @@ namespace PFARender
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+            settings.palette = paletteList.SelectedImage;
             try
             {
                 string s = JsonConvert.SerializeObject(settings, Formatting.Indented);
