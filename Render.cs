@@ -248,7 +248,7 @@ void main()
             double x1, x2, y1, y2;
             double wdth;
             float r, g, b, a, r2, g2, b2, a2, r3, g3, b3, a3;
-            double paddingx = 0.001 / 1920 * renderSettings.width;
+            double paddingx = 0.001 * 1920 / renderSettings.width;
             double paddingy = paddingx * renderSettings.width / renderSettings.height;
 
             double[] x1array = new double[257];
