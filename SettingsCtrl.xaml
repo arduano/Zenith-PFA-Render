@@ -33,12 +33,6 @@
         <Button x:Name="saveButton" Content="Save" HorizontalAlignment="Left" Margin="10,197,0,0" VerticalAlignment="Top" Width="74" Click="SaveButton_Click" RenderTransformOrigin="0.234,0.75" />
         <Button x:Name="loadButton" Content="Load Saved" HorizontalAlignment="Left" Margin="89,197,0,0" VerticalAlignment="Top" Width="88" Click="LoadButton_Click" />
         <Button x:Name="defaultsButton" Content="Defaults" HorizontalAlignment="Left" Margin="182,197,0,0" VerticalAlignment="Top" Width="74" Click="DefaultsButton_Click"/>
-        <ComboBox Padding="5px" Name="topColorSelect" HorizontalAlignment="Left" Margin="76,166,0,0" VerticalAlignment="Top" Width="95" Height="26" SelectedIndex="1" SelectionChanged="TopColorSelect_SelectionChanged">
-            <ComboBoxItem Content="{DynamicResource colorRed}"/>
-            <ComboBoxItem Content="{DynamicResource colorBlue}"/>
-            <ComboBoxItem Content="{DynamicResource colorGreen}"/>
-        </ComboBox>
-        <Label x:Name="topCol" Content="{DynamicResource topColor}" HorizontalAlignment="Left" Margin="10,166,0,0" VerticalAlignment="Top"/>
         <CheckBox Name="middleCSquare" Content="{DynamicResource middleCSquare}" HorizontalAlignment="Left" Margin="13,95,0,0" VerticalAlignment="Top" Checked="MiddleCSquare_Checked" Unchecked="MiddleCSquare_Checked"/>
         <DockPanel HorizontalAlignment="Left" LastChildFill="False" Margin="10,135,0,0" VerticalAlignment="Top">
             <Label Content="{DynamicResource noteTempo}" HorizontalAlignment="Left" VerticalAlignment="Top" DockPanel.Dock="Left"/>
@@ -49,5 +43,13 @@
         </DockPanel>
         <CheckBox x:Name="blackNotesAbove" Content="{DynamicResource blackNotesAbove}" HorizontalAlignment="Left" Margin="13,115,0,0" VerticalAlignment="Top" Checked="BlackNotesAbove_Checked" Unchecked="BlackNotesAbove_Checked"/>
         <bme:NoteColorPalettePick x:FieldModifier="public" x:Name="paletteList" Margin="0,10,10,10" HorizontalAlignment="Right" Width="184"/>
+        <DockPanel HorizontalAlignment="Left" LastChildFill="False" Margin="10,166,0,0" VerticalAlignment="Top">
+            <Label x:Name="topCol" Content="{DynamicResource topColor}" HorizontalAlignment="Left" VerticalAlignment="Top" DockPanel.Dock="Left"/>
+            <ComboBox Padding="5px" Name="topColorSelect" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Width="95" Height="26" SelectedIndex="1" SelectionChanged="TopColorSelect_SelectionChanged">
+                <ComboBoxItem Content="{DynamicResource colorRed}"/>
+                <ComboBoxItem Content="{DynamicResource colorBlue}"/>
+                <ComboBoxItem Content="{DynamicResource colorGreen}"/>
+            </ComboBox>
+        </DockPanel>
     </Grid>
 </UserControl>
