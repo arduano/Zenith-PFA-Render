@@ -115,6 +115,9 @@ void main()
         {
             GL.DeleteBuffers(3, new int[] { vertexBufferID, colorBufferID, attribBufferID });
             GL.DeleteProgram(noteShader);
+            quadVertexbuff = null;
+            quadColorbuff = null;
+            quadAttribbuff = null;
             Initialized = false;
             Console.WriteLine("Disposed of PFARender");
         }
