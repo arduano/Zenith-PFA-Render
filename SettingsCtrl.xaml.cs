@@ -30,7 +30,6 @@ namespace PFARender
             lastNote.Value = settings.lastNote - 1;
             pianoHeight.Value = (int)(settings.pianoHeight * 100);
             noteDeltaScreenTime.Value = Math.Log(settings.deltaTimeOnScreen, 2);
-            screenTime.Content = (Math.Round(settings.deltaTimeOnScreen * 100) / 100).ToString();
             sameWidth.IsChecked = settings.sameWidthNotes;
             topColorSelect.SelectedIndex = (int)settings.topColor;
             middleCSquare.IsChecked = settings.middleC;
@@ -66,12 +65,15 @@ namespace PFARender
         {
             try
             {
+                if (screenTimeLock) return;
+                screenTimeLock = true;
                 settings.deltaTimeOnScreen = Math.Pow(2, noteDeltaScreenTime.Value);
-                screenTime.Content = (Math.Round(settings.deltaTimeOnScreen * 100) / 100).ToString();
+                screenTime_nud.Value = (decimal)settings.deltaTimeOnScreen;
+                screenTimeLock = false;
             }
             catch (NullReferenceException)
             {
-
+                screenTimeLock = false;
             }
         }
 
@@ -176,5 +178,23 @@ namespace PFARender
             }
             catch (NullReferenceException) { }
         }
+
+        bool screenTimeLock = false;
+        private void ScreenTime_nud_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            try
+            {
+                if (screenTimeLock) return;
+                screenTimeLock = true;
+                noteDeltaScreenTime.Value = Math.Log((double)screenTime_nud.Value, 2);
+                settings.deltaTimeOnScreen = (double)screenTime_nud.Value;
+                screenTimeLock = false;
+            }
+            catch
+            {
+                screenTimeLock = false;
+            }
+        }
+
     }
 }
