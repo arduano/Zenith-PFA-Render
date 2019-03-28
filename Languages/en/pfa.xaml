@@ -29,4 +29,6 @@
     <system:String x:Key="colorRed">Red</system:String>
     <system:String x:Key="colorGreen">Green</system:String>
     <system:String x:Key="colorBlue">Blue</system:String>
+
+    <system:String x:Key="borderWidth">Border Width</system:String> <!--NEW-->
 </ResourceDictionary>

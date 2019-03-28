@@ -32,7 +32,7 @@
             <xctk:DecimalUpDown x:Name="screenTime_nud" FormatString="F2" Value="1" Increment="1"  Maximum="16000" Minimum="1" HorizontalAlignment="Left" Width="80" Height="26" VerticalAlignment="Top" ValueChanged="ScreenTime_nud_ValueChanged"  DockPanel.Dock="Left"  />
         </DockPanel>
         <CheckBox x:Name="sameWidth" Content="{DynamicResource sameWidthNotes}" HorizontalAlignment="Left" Margin="13,106,0,0" VerticalAlignment="Top" IsChecked="True" Checked="SameWidth_Checked" Unchecked="SameWidth_Checked" />
-        <DockPanel HorizontalAlignment="Left" LastChildFill="False" Margin="10,228,0,0" VerticalAlignment="Top" >
+        <DockPanel HorizontalAlignment="Left" LastChildFill="False" Margin="10,259,0,0" VerticalAlignment="Top" >
             <Button x:Name="saveButton" Content="{DynamicResource save}" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="20,0,20,0" Height="20" Click="SaveButton_Click" DockPanel.Dock="Left" />
             <Button x:Name="loadButton" Content="{DynamicResource loadSaved}" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="20,0,20,0" Height="20" Click="LoadButton_Click" DockPanel.Dock="Left" Margin="10,0,0,0" />
             <Button x:Name="defaultsButton" Content="{DynamicResource setDefaults}" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="20,0,20,0" Height="20" Click="DefaultsButton_Click" DockPanel.Dock="Left" Margin="10,0,0,0"/>
@@ -54,6 +54,10 @@
                 <ComboBoxItem Content="{DynamicResource colorBlue}"/>
                 <ComboBoxItem Content="{DynamicResource colorGreen}"/>
             </ComboBox>
+        </DockPanel>
+        <DockPanel HorizontalAlignment="Left" LastChildFill="False" Margin="13,228,0,0" VerticalAlignment="Top" >
+            <Label Content="{DynamicResource borderWidth}" DockPanel.Dock="Left" VerticalAlignment="Top"/>
+            <xctk:DecimalUpDown x:Name="borderWidth" FormatString="F2" Value="1" Increment="0.1"  Maximum="2" Minimum="0" Margin="5,0,0,0" HorizontalAlignment="Left" Width="80" Height="26" VerticalAlignment="Top" ValueChanged="Nud_ValueChanged"  />
         </DockPanel>
     </Grid>
 </UserControl>

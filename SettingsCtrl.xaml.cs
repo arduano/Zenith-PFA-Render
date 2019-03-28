@@ -30,6 +30,7 @@ namespace PFARender
             lastNote.Value = settings.lastNote - 1;
             pianoHeight.Value = (int)(settings.pianoHeight * 100);
             noteDeltaScreenTime.Value = Math.Log(settings.deltaTimeOnScreen, 2);
+            borderWidth.Value = (decimal)settings.borderWidth;
             sameWidth.IsChecked = settings.sameWidthNotes;
             topColorSelect.SelectedIndex = (int)settings.topColor;
             middleCSquare.IsChecked = settings.middleC;
@@ -56,6 +57,7 @@ namespace PFARender
                 if (sender == lastNote) settings.lastNote = (int)lastNote.Value + 1;
                 if (sender == pianoHeight) settings.pianoHeight = (double)pianoHeight.Value / 100;
                 if (sender == noteDeltaScreenTime) settings.deltaTimeOnScreen = (int)noteDeltaScreenTime.Value;
+                if (sender == borderWidth) settings.borderWidth = (double)borderWidth.Value;
             }
             catch (NullReferenceException) { }
             catch (InvalidOperationException) { }
