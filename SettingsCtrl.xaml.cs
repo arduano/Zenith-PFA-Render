@@ -35,8 +35,6 @@ namespace PFARender
             topColorSelect.SelectedIndex = (int)settings.topColor;
             middleCSquare.IsChecked = settings.middleC;
             blackNotesAbove.IsChecked = settings.blackNotesAbove;
-            if (settings.tickBased) tickBase.SelectedIndex = 0;
-            else tickBase.SelectedIndex = 1;
             paletteList.SelectImage(settings.palette);
         }
 
@@ -159,15 +157,6 @@ namespace PFARender
             try
             {
                 settings.middleC = (bool)middleCSquare.IsChecked;
-            }
-            catch (NullReferenceException) { }
-        }
-
-        private void TickBase_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            try
-            {
-                settings.tickBased = tickBase.SelectedIndex == 0;
             }
             catch (NullReferenceException) { }
         }

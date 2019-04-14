@@ -32,22 +32,15 @@
             <xctk:DecimalUpDown x:Name="screenTime_nud" FormatString="F2" Value="1" Increment="1"  Maximum="16000" Minimum="1" HorizontalAlignment="Left" Width="80" Height="26" VerticalAlignment="Top" ValueChanged="ScreenTime_nud_ValueChanged"  DockPanel.Dock="Left"  />
         </DockPanel>
         <CheckBox x:Name="sameWidth" Content="{DynamicResource sameWidthNotes}" HorizontalAlignment="Left" Margin="13,106,0,0" VerticalAlignment="Top" IsChecked="True" Checked="SameWidth_Checked" Unchecked="SameWidth_Checked" />
-        <DockPanel HorizontalAlignment="Left" LastChildFill="False" Margin="10,259,0,0" VerticalAlignment="Top" >
+        <DockPanel HorizontalAlignment="Left" LastChildFill="False" Margin="10,232,0,0" VerticalAlignment="Top" >
             <Button x:Name="saveButton" Content="{DynamicResource save}" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="20,0,20,0" Height="20" Click="SaveButton_Click" DockPanel.Dock="Left" />
             <Button x:Name="loadButton" Content="{DynamicResource loadSaved}" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="20,0,20,0" Height="20" Click="LoadButton_Click" DockPanel.Dock="Left" Margin="10,0,0,0" />
             <Button x:Name="defaultsButton" Content="{DynamicResource setDefaults}" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="20,0,20,0" Height="20" Click="DefaultsButton_Click" DockPanel.Dock="Left" Margin="10,0,0,0"/>
         </DockPanel>
         <CheckBox Name="middleCSquare" Content="{DynamicResource middleCSquare}" HorizontalAlignment="Left" Margin="13,126,0,0" VerticalAlignment="Top" Checked="MiddleCSquare_Checked" Unchecked="MiddleCSquare_Checked"/>
-        <DockPanel HorizontalAlignment="Left" LastChildFill="False" Margin="10,166,0,0" VerticalAlignment="Top">
-            <Label Content="{DynamicResource noteTempo}" HorizontalAlignment="Left" VerticalAlignment="Top" DockPanel.Dock="Left"/>
-            <ComboBox Name="tickBase" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Height="26" SelectedIndex="0" SelectionChanged="TickBase_SelectionChanged">
-                <ComboBoxItem Content="{DynamicResource changeSpeed}"/>
-                <ComboBoxItem Content="{DynamicResource changeSize}"/>
-            </ComboBox>
-        </DockPanel>
         <CheckBox x:Name="blackNotesAbove" Content="{DynamicResource blackNotesAbove}" HorizontalAlignment="Left" Margin="13,146,0,0" VerticalAlignment="Top" Checked="BlackNotesAbove_Checked" Unchecked="BlackNotesAbove_Checked"/>
         <bme:NoteColorPalettePick x:FieldModifier="public" x:Name="paletteList" Margin="0,10,10,10" HorizontalAlignment="Right" Width="184"/>
-        <DockPanel HorizontalAlignment="Left" LastChildFill="False" Margin="10,197,0,0" VerticalAlignment="Top">
+        <DockPanel HorizontalAlignment="Left" LastChildFill="False" Margin="10,170,0,0" VerticalAlignment="Top">
             <Label x:Name="topCol" Content="{DynamicResource topColor}" HorizontalAlignment="Left" VerticalAlignment="Top" DockPanel.Dock="Left"/>
             <ComboBox Padding="5px" Name="topColorSelect" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Width="95" Height="26" SelectedIndex="1" SelectionChanged="TopColorSelect_SelectionChanged">
                 <ComboBoxItem Content="{DynamicResource colorRed}"/>
@@ -55,7 +48,7 @@
                 <ComboBoxItem Content="{DynamicResource colorGreen}"/>
             </ComboBox>
         </DockPanel>
-        <DockPanel HorizontalAlignment="Left" LastChildFill="False" Margin="13,228,0,0" VerticalAlignment="Top" >
+        <DockPanel HorizontalAlignment="Left" LastChildFill="False" Margin="13,201,0,0" VerticalAlignment="Top" >
             <Label Content="{DynamicResource borderWidth}" DockPanel.Dock="Left" VerticalAlignment="Top"/>
             <xctk:DecimalUpDown x:Name="borderWidth" FormatString="F2" Value="1" Increment="0.1"  Maximum="2" Minimum="0" Margin="5,0,0,0" HorizontalAlignment="Left" Width="80" Height="26" VerticalAlignment="Top" ValueChanged="Nud_ValueChanged"  />
         </DockPanel>

@@ -104,14 +104,7 @@ void main()
 
         public MidiInfo CurrentMidi { get; set; }
 
-        public double NoteScreenTime
-        {
-            get
-            {
-                if (settings.tickBased) return settings.deltaTimeOnScreen;
-                return (double)settings.deltaTimeOnScreen * (500000 / 96.0) / LastMidiTimePerTick / 10;
-            }
-        }
+        public double NoteScreenTime => settings.deltaTimeOnScreen;
 
         public System.Windows.Controls.Control SettingsControl => settingsControl;
 
@@ -614,20 +607,11 @@ void main()
             double bKeyDownB = bKeyEnd + pianoHeight * 0.015;
             double bKeyUpT = topBarEnd + pianoHeight * 0.04;
             double bKeyUpB = bKeyEnd + pianoHeight * 0.04;
-
-#if !NORMAL_SHADE
-            //reversed
-            double bKeyUSplitRT = pianoHeight * 0.78;
-            double bKeyUSplitLT = pianoHeight * 0.71;
-            double bKeyUSplitRB = pianoHeight * 0.65;
-            double bKeyUSplitLB = pianoHeight * 0.58;
-#else
-            //normal
+            
             double bKeyUSplitLT = pianoHeight * 0.78;
             double bKeyUSplitRT = pianoHeight * 0.71;
             double bKeyUSplitLB = pianoHeight * 0.65;
             double bKeyUSplitRB = pianoHeight * 0.58;
-#endif
             double keySpacing = 0;
 
             double ox1, ox2, oy1, oy2, ix1, ix2, iy1, iy2;

@@ -26,7 +26,5 @@ namespace PFARender
         public bool blackNotesAbove = true;
 
         public string palette = "Random";
-
-        public bool tickBased = true;
     }
 }
