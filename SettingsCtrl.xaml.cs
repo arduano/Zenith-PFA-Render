@@ -32,7 +32,7 @@ namespace PFARender
             noteDeltaScreenTime.Value = Math.Log(settings.deltaTimeOnScreen, 2);
             borderWidth.Value = (decimal)settings.borderWidth;
             sameWidth.IsChecked = settings.sameWidthNotes;
-            topColorSelect.SelectedIndex = (int)settings.topColor;
+            //topColorSelect.SelectedIndex = (int)settings.topColor;
             middleCSquare.IsChecked = settings.middleC;
             blackNotesAbove.IsChecked = settings.blackNotesAbove;
             paletteList.SelectImage(settings.palette);
@@ -143,14 +143,14 @@ namespace PFARender
             catch (NullReferenceException) { }
         }
 
-        private void TopColorSelect_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            try
-            {
-                settings.topColor = (TopColor)topColorSelect.SelectedIndex;
-            }
-            catch (NullReferenceException) { }
-        }
+        //private void TopColorSelect_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        settings.topColor = (TopColor)topColorSelect.SelectedIndex;
+        //    }
+        //    catch (NullReferenceException) { }
+        //}
 
         private void MiddleCSquare_Checked(object sender, RoutedEventArgs e)
         {
@@ -187,5 +187,18 @@ namespace PFARender
             }
         }
 
+        private void BarColorHex_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var hex = barColorHex.Text;
+            if (hex.Length != 6) return;
+            try
+            {
+                int col = int.Parse(hex, System.Globalization.NumberStyles.HexNumber);
+                settings.topBarR = ((col >> 16) & 0xFF) / 255.0f;
+                settings.topBarG = ((col >> 8) & 0xFF) / 255.0f;
+                settings.topBarB = ((col >> 0) & 0xFF) / 255.0f;
+            }
+            catch { return; }
+        }
     }
 }

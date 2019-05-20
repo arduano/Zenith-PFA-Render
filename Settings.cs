@@ -25,6 +25,10 @@ namespace PFARender
         public bool middleC = false;
         public bool blackNotesAbove = true;
 
+        public float topBarR = .585f;
+        public float topBarG = .0392f;
+        public float topBarB = .0249f;
+
         public string palette = "Random";
     }
 }

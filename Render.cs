@@ -690,14 +690,14 @@ void main()
 
             if (settings.topColor == TopColor.Red)
             {
-                r = .313f;
-                g = .0196f;
-                b = .0274f;
-                a = 1f;
-                r2 = .585f;
-                g2 = .0392f;
-                b2 = .0249f;
+                r2 = settings.topBarR;
+                g2 = settings.topBarG;
+                b2 = settings.topBarB;
                 a2 = 1f;
+                r = r2 * 0.5f;
+                g = g2 * 0.5f;
+                b = b2 * 0.5f;
+                a = 1f;
             }
             else if (settings.topColor == TopColor.Blue)
             {
@@ -1282,8 +1282,6 @@ void main()
                     quadVertexbuff[pos++] = ix1;
                     quadVertexbuff[pos++] = bKeyUpT;
 
-
-#if !NORMAL_SHADE
                     pos = quadBufferPos * 8;
                     quadAttribbuff[pos++] = 0.25f;
                     quadAttribbuff[pos++] = 1;
@@ -1293,17 +1291,6 @@ void main()
                     quadAttribbuff[pos++] = 1;
                     quadAttribbuff[pos++] = 0.15f;
                     quadAttribbuff[pos++] = 1;
-#else
-                    pos = quadBufferPos * 8;
-                    quadAttribbuff[pos++] = 0.2f;
-                    quadAttribbuff[pos++] = 1;
-                    quadAttribbuff[pos++] = 0.2f;
-                    quadAttribbuff[pos++] = 1;
-                    quadAttribbuff[pos++] = 0.15f;
-                    quadAttribbuff[pos++] = 1;
-                    quadAttribbuff[pos++] = 0.15f;
-                    quadAttribbuff[pos++] = 1;
-#endif
 
                     pos = quadBufferPos * 16;
                     quadColorbuff[pos++] = r;
@@ -1336,7 +1323,6 @@ void main()
                     quadVertexbuff[pos++] = ix1;
                     quadVertexbuff[pos++] = bKeyUSplitLT;
 
-#if !NORMAL_SHADE
                     pos = quadBufferPos * 8;
                     quadAttribbuff[pos++] = 0;
                     quadAttribbuff[pos++] = 1;
@@ -1346,17 +1332,7 @@ void main()
                     quadAttribbuff[pos++] = 1;
                     quadAttribbuff[pos++] = 0.25f;
                     quadAttribbuff[pos++] = 1;
-#else
-                    pos = quadBufferPos * 8;
-                    quadAttribbuff[pos++] = 0;
-                    quadAttribbuff[pos++] = 1;
-                    quadAttribbuff[pos++] = 0;
-                    quadAttribbuff[pos++] = 1;
-                    quadAttribbuff[pos++] = 0.2f;
-                    quadAttribbuff[pos++] = 1;
-                    quadAttribbuff[pos++] = 0.2f;
-                    quadAttribbuff[pos++] = 1;
-#endif
+
                     pos = quadBufferPos * 16;
                     quadColorbuff[pos++] = r;
                     quadColorbuff[pos++] = g;

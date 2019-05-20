@@ -42,11 +42,13 @@
         <bme:NoteColorPalettePick x:FieldModifier="public" x:Name="paletteList" Margin="0,10,10,10" HorizontalAlignment="Right" Width="184"/>
         <DockPanel HorizontalAlignment="Left" LastChildFill="False" Margin="10,170,0,0" VerticalAlignment="Top">
             <Label x:Name="topCol" Content="{DynamicResource topColor}" HorizontalAlignment="Left" VerticalAlignment="Top" DockPanel.Dock="Left"/>
-            <ComboBox Padding="5px" Name="topColorSelect" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Width="95" Height="26" SelectedIndex="1" SelectionChanged="TopColorSelect_SelectionChanged">
+            <!--<ComboBox Padding="5px" Name="topColorSelect" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Width="95" Height="26" SelectedIndex="1" SelectionChanged="TopColorSelect_SelectionChanged">
                 <ComboBoxItem Content="{DynamicResource colorRed}"/>
                 <ComboBoxItem Content="{DynamicResource colorBlue}"/>
                 <ComboBoxItem Content="{DynamicResource colorGreen}"/>
-            </ComboBox>
+            </ComboBox>-->
+            <TextBlock HorizontalAlignment="Left" Margin="0,4,2,0" TextWrapping="Wrap" Text="#" VerticalAlignment="Top" FontSize="14"/>
+            <TextBox x:Name="barColorHex" HorizontalAlignment="Left" MaxLength="6" Height="20" Margin="0,4,0,0" TextWrapping="Wrap" Text="950A06" VerticalAlignment="Top" Width="47" TextChanged="BarColorHex_TextChanged"/>
         </DockPanel>
         <DockPanel HorizontalAlignment="Left" LastChildFill="False" Margin="13,201,0,0" VerticalAlignment="Top" >
             <Label Content="{DynamicResource borderWidth}" DockPanel.Dock="Left" VerticalAlignment="Top"/>
