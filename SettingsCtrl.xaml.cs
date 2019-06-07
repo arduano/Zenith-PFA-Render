@@ -42,7 +42,7 @@ namespace PFARender
         {
             InitializeComponent();
             this.settings = settings;
-            paletteList.SetPath("Plugins\\Assets\\PFA\\Palettes", 0.8f);
+            paletteList.SetPath("Plugins\\Assets\\Palettes", 0.8f);
             LoadSettings(true);
             SetValues();
         }
