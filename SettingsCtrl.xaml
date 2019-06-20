@@ -24,7 +24,7 @@
         </DockPanel>
         <DockPanel HorizontalAlignment="Left" LastChildFill="False" Margin="10,41,0,0" VerticalAlignment="Top">
             <Label Content="{DynamicResource pianoHeight}" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top"/>
-            <xctk:DecimalUpDown x:Name="pianoHeight" FormatString="F1" Value="1" Increment="1"  Maximum="100" Minimum="1" Margin="6,0,0,0" HorizontalAlignment="Left" Width="80" Height="26" VerticalAlignment="Top"  ValueChanged="Nud_ValueChanged"  />
+            <xctk:DecimalUpDown x:Name="pianoHeight" FormatString="F1" Value="1" Increment="0.1"  Maximum="100" Minimum="1" Margin="6,0,0,0" HorizontalAlignment="Left" Width="80" Height="26" VerticalAlignment="Top"  ValueChanged="Nud_ValueChanged"  />
         </DockPanel>
         <DockPanel HorizontalAlignment="Left" LastChildFill="False" Margin="10,72,0,0" VerticalAlignment="Top" >
             <Label Content="{DynamicResource noteScreenTime}" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"/>

@@ -42,7 +42,7 @@ namespace PFARender
         public string Description => "A replica of PFA with some special extra features";
         public ImageSource PreviewImage { get; private set; }
 
-#region Shaders
+        #region Shaders
         string noteShaderVert = @"#version 330 compatibility
 
 layout(location = 0) in vec3 position;
@@ -70,7 +70,7 @@ void main()
 	texOut = outputF;
 }
 ";
-#endregion
+        #endregion
 
         public int NoteCollectorOffset => 0;
         public bool ManualNoteDelete => false;
@@ -225,7 +225,7 @@ void main()
 
             GL.UseProgram(noteShader);
 
-#region Vars
+            #region Vars
             long nc = 0;
             int firstNote = settings.firstNote;
             int lastNote = settings.lastNote;
@@ -279,17 +279,22 @@ void main()
                     else
                     {
                         int _i = i + 1;
-                        wdth = 0.6f / (knmln - knmfn + 1);
+                        wdth = 0.64f / (knmln - knmfn + 1);
                         int bknum = keynum[i] % 5;
                         double offset = wdth / 2;
-                        if (bknum == 0 || bknum == 2)
-                        {
-                            offset *= 1.3;
-                        }
-                        else if (bknum == 1 || bknum == 4)
-                        {
-                            offset *= 0.7;
-                        }
+                        if (bknum == 0) offset += offset * 0.4;
+                        if (bknum == 2) offset += offset * 0.4;
+                        if (bknum == 1) offset -= offset * 0.4;
+                        if (bknum == 4) offset -= offset * 0.4;
+
+                        //if (bknum == 0 || bknum == 2)
+                        //{
+                        //    offset *= 1.3;
+                        //}
+                        //else if (bknum == 1 || bknum == 4)
+                        //{
+                        //    offset *= 0.7;
+                        //}
                         x1array[i] = (float)(keynum[_i] - knmfn) / (knmln - knmfn + 1) - offset;
                         wdtharray[i] = wdth;
                     }
@@ -297,9 +302,9 @@ void main()
             }
             double sepwdth = Math.Round(wdtharray[0] * scwidth / 20);
             if (sepwdth == 0) sepwdth = 1;
-#endregion
+            #endregion
 
-#region Notes
+            #region Notes
             quadBufferPos = 0;
             double notePosFactor = 1 / deltaTimeOnScreen * (1 - pianoHeight);
             foreach (Note n in notes)
@@ -589,25 +594,24 @@ void main()
             }
             FlushQuadBuffer(false);
             LastNoteCount = nc;
-#endregion
+            #endregion
 
-#region Keyboard
+            #region Keyboard
             quadBufferPos = 0;
 
             double topRedStart = pianoHeight * .99;
-            double topRedMiddle = pianoHeight * .96;
             double topRedEnd = pianoHeight * .94;
-            double topBarEnd = pianoHeight * .925;
+            double topBarEnd = pianoHeight * .927;
 
-            double wEndUpT = pianoHeight * 0.03 + pianoHeight * 0.015;
-            double wEndUpB = pianoHeight * 0.03;
+            double wEndUpT = pianoHeight * 0.03 + pianoHeight * 0.020;
+            double wEndUpB = pianoHeight * 0.03 + pianoHeight * 0.005;
             double wEndDownT = pianoHeight * 0.01;
-            double bKeyEnd = pianoHeight * 0.33;
+            double bKeyEnd = pianoHeight * .345;
             double bKeyDownT = topBarEnd + pianoHeight * 0.015;
             double bKeyDownB = bKeyEnd + pianoHeight * 0.015;
-            double bKeyUpT = topBarEnd + pianoHeight * 0.04;
-            double bKeyUpB = bKeyEnd + pianoHeight * 0.04;
-            
+            double bKeyUpT = topBarEnd + pianoHeight * 0.045;
+            double bKeyUpB = bKeyEnd + pianoHeight * 0.045;
+
             double bKeyUSplitLT = pianoHeight * 0.78;
             double bKeyUSplitRT = pianoHeight * 0.71;
             double bKeyUSplitLB = pianoHeight * 0.65;
@@ -616,7 +620,7 @@ void main()
 
             double ox1, ox2, oy1, oy2, ix1, ix2, iy1, iy2;
 
-#region Decorations
+            #region Decorations
             //Grey thing
             pos = quadBufferPos * 8;
             quadVertexbuff[pos++] = 0;
@@ -791,7 +795,7 @@ void main()
             quadColorbuff[pos++] = a2;
             quadBufferPos++;
             FlushQuadBuffer();
-#endregion
+            #endregion
 
             y2 = 0;
             y1 = topBarEnd;
@@ -804,7 +808,7 @@ void main()
                     origColors[k] = Color4.White;
             }
 
-#region White
+            #region White
             for (int n = kbfirstNote; n < kblastNote; n++)
             {
                 x1 = x1array[n];
@@ -998,9 +1002,9 @@ void main()
                     FlushQuadBuffer();
 
                     //Key End Notch 
-                    r = .329f;
-                    g = .329f;
-                    b = .329f;
+                    r = .529f;
+                    g = .529f;
+                    b = .529f;
                     a = 1f;
                     r2 = .329f;
                     g2 = .329f;
@@ -1216,9 +1220,9 @@ void main()
                 quadBufferPos++;
                 FlushQuadBuffer();
             }
-#endregion
+            #endregion
 
-#region Black
+            #region Black
             for (int n = kbfirstNote; n < kblastNote; n++)
             {
                 if (!blackKeys[n])
@@ -1270,7 +1274,7 @@ void main()
 
                 if (!keyPressed[n])
                 {
-#region Unpressed
+                    #region Unpressed
                     //Middle Top
                     pos = quadBufferPos * 8;
                     quadVertexbuff[pos++] = ix1;
@@ -1516,11 +1520,11 @@ void main()
                     quadColorbuff[pos++] = a2;
                     quadBufferPos++;
                     FlushQuadBuffer();
-#endregion
+                    #endregion
                 }
                 else
                 {
-#region Pressed
+                    #region Pressed
                     //Middle Top
                     pos = quadBufferPos * 8;
                     quadVertexbuff[pos++] = ix1;
@@ -1766,13 +1770,13 @@ void main()
                     quadColorbuff[pos++] = a;
                     quadBufferPos++;
                     FlushQuadBuffer();
-#endregion
+                    #endregion
                 }
             }
-#endregion
+            #endregion
 
             FlushQuadBuffer(false);
-#endregion
+            #endregion( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)
 
 
             GL.Disable(EnableCap.Blend);
