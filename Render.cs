@@ -104,11 +104,13 @@ void main()
 
         public MidiInfo CurrentMidi { get; set; }
 
+        public NoteColor[][] NoteColors { get; set; }
+
         public double NoteScreenTime => settings.deltaTimeOnScreen;
 
         public System.Windows.Controls.Control SettingsControl => settingsControl;
 
-        public double LastMidiTimePerTick { get; set; } = 500000 / 96.0;
+        public double Tempo { get; set; }
 
         public void Dispose()
         {
@@ -126,6 +128,7 @@ void main()
             this.settings = new Settings();
             this.renderSettings = settings;
             settingsControl = new SettingsCtrl(this.settings);
+            ((SettingsCtrl)SettingsControl).PaletteChanged += () => { ReloadTrackColors(); };
             PreviewImage = BitmapToImageSource(Properties.Resources.preview);
             for (int i = 0; i < blackKeys.Length; i++) blackKeys[i] = isBlackNote(i);
             int b = 0;
@@ -1820,16 +1823,19 @@ void main()
             quadBufferPos = 0;
         }
 
-        public void SetTrackColors(NoteColor[][] trakcs)
+        public void ReloadTrackColors()
         {
-            var cols = ((SettingsCtrl)SettingsControl).paletteList.GetColors(trakcs.Length);
+            var cols = ((SettingsCtrl)SettingsControl).paletteList.GetColors(NoteColors.Length);
 
-            for (int i = 0; i < trakcs.Length; i++)
+            for (int i = 0; i < NoteColors.Length; i++)
             {
-                for (int j = 0; j < trakcs[i].Length; j++)
+                for (int j = 0; j < NoteColors[i].Length; j++)
                 {
-                    trakcs[i][j].left = cols[i * 32 + j * 2];
-                    trakcs[i][j].right = cols[i * 32 + j * 2 + 1];
+                    if (NoteColors[i][j].isDefault)
+                    {
+                        NoteColors[i][j].left = cols[i * 32 + j * 2];
+                        NoteColors[i][j].right = cols[i * 32 + j * 2 + 1];
+                    }
                 }
             }
         }

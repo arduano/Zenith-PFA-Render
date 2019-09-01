@@ -24,6 +24,12 @@ namespace PFARender
     {
         Settings settings;
 
+        public event Action PaletteChanged
+        {
+            add { paletteList.PaletteChanged += value; }
+            remove { paletteList.PaletteChanged -= value; }
+        }
+
         public void SetValues()
         {
             firstNote.Value = settings.firstNote;
