@@ -72,7 +72,7 @@ void main()
 ";
         #endregion
 
-        public int NoteCollectorOffset => 0;
+        public double NoteCollectorOffset => 0;
         public bool ManualNoteDelete => false;
 
         RenderSettings renderSettings;
@@ -1825,6 +1825,7 @@ void main()
 
         public void ReloadTrackColors()
         {
+            if (NoteColors == null) return;
             var cols = ((SettingsCtrl)SettingsControl).paletteList.GetColors(NoteColors.Length);
 
             for (int i = 0; i < NoteColors.Length; i++)
