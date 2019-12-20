@@ -41,6 +41,7 @@ namespace PFARender
 #endif
         public string Description => "A replica of PFA with some special extra features";
         public ImageSource PreviewImage { get; private set; }
+        public string LanguageDictName { get; } = "pfa";
 
         #region Shaders
         string noteShaderVert = @"#version 330 compatibility
